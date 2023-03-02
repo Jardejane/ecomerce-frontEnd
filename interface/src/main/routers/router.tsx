@@ -11,6 +11,12 @@ export const Router = (): JSX.Element => {
 				path={RoutePath.HOME}
 				element={!logged ? <Login /> : <Home />}
 			/>
+			{logged && (
+				<Route
+					path={RoutePath.SETTINGS}
+					element={<div>Settings</div>}
+				/>
+			)}
 			<Route
 				path="*"
 				element={
@@ -20,10 +26,6 @@ export const Router = (): JSX.Element => {
 					/>
 				}
 			/>
-			{/* <Route
-				path={RoutePath.SETTINGS}
-				element={<Settings />}
-			/> */}
 		</Routes>
 	);
 };
