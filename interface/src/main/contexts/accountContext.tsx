@@ -1,5 +1,5 @@
 import { AllProvidersProps, AuthResponse, AuthProviderData } from "types";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext<AuthProviderData>({} as AuthProviderData);
 
@@ -41,6 +41,12 @@ export const AuthProvider = ({ children }: AllProvidersProps): JSX.Element => {
 	// 			logout();
 	// 		});
 	// };
+
+	useEffect(() => {
+		const token = localStorage.getItem("token");
+		if (token) setLogged(true);
+		// if (token) checkTokenExpiration();
+	}, []);
 
 	return (
 		<AuthContext.Provider
