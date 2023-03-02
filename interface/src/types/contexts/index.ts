@@ -13,7 +13,12 @@ export interface AuthProviderData {
 }
 
 export interface ProductsProviderData {
-	allProducts: IProduct[];
-	genresProducts: IProduct[];
+	products: IProduct[];
+	currentProduct: IProduct;
 	createProduct: (data: IProduct) => void;
+	updateProduct: (data: IProduct, id: string) => void;
+	deleteProduct: (id: string) => void;
+	getProductByCategory: (category: string) => void;
+	getProductById: (id: string) => void;
+	getAllProducts: () => void;
 }

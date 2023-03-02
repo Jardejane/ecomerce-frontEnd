@@ -2,6 +2,7 @@ import { AllProvidersProps, IProduct, ProductsProviderData } from "types";
 import { createContext, useContext, useState } from "react";
 import { Api, useAuth } from "main";
 import { error, success } from "presentation";
+import { EProductsEndpoints } from "types/api";
 
 const ProductsContext = createContext<ProductsProviderData>(
 	{} as ProductsProviderData,
@@ -11,7 +12,14 @@ export const ProductsProvider = ({
 	children,
 }: AllProvidersProps): JSX.Element => {
 	const { logged, token } = useAuth();
-	const allProducts: IProduct[] = [
+
+	const headers = {
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	};
+
+  	const allProducts: IProduct[] = [
 		{
 			name: "Best",
 			description: "the best product",
@@ -25,35 +33,20 @@ export const ProductsProvider = ({
 			category: "usual",
 		},
 	];
-	const genresProducts: IProduct[] = [
-		{
-			name: "Best genre",
-			description: "the best product",
-			price: 10.5,
-			category: "new",
-		},
-		{
-			name: "Not Too Best genre",
-			description: "the not so best product",
-			price: 5.25,
-			category: "usual",
-		},
-	];
+    
+    const [products, setProducts] = useState<IProduct[]>(allProducts);
+    const [currentProduct, setCurrentProduct] = useState<IProduct>(allProducts[0]);
+
 
 	const createProduct = ({
 		name,
 		price,
 		category,
 		description,
-	}: IProduct) => {
+	}: IProduct): void => {
 		if (logged && name && price && category && description) {
 			const data = { name, price, category, description };
-			const headers = {
-				headers: {
-					Authorization: `Bearer ${token}`,
-				},
-			};
-			Api.post(`/story/products/create`, data, headers)
+			Api.post(EProductsEndpoints.CREATE, data, headers)
 				.then((): void => {
 					success("Registrated");
 				})
@@ -64,13 +57,67 @@ export const ProductsProvider = ({
 			error("Invalid data");
 		}
 	};
+	const updateProduct = (
+		{ name, price, category, description }: IProduct,
+		id: string,
+	): void => {
+		if (logged) {
+			const data = { name, price, category, description };
+			Api.put(EProductsEndpoints.BASE + "/" + id, data, headers)
+				.then((): void => {
+					success("Updated");
+				})
+				.catch(err => {
+					error(err);
+				});
+		} else {
+			error("Invalid data");
+		}
+	};
+	const deleteProduct = (id: string): void => {
+		Api.delete(EProductsEndpoints.BASE + "/" + id, headers)
+			.then((): void => {
+				success("Deleted");
+			})
+			.catch(err => {
+				error(err);
+			});
+	};
 
-	// useEffect(() => {
-	// }, []);
+	const getAllProducts = (): void => {
+		Api.get(EProductsEndpoints.BASE, headers)
+			.then(res => setProducts(res.data))
+			.catch(err => {
+				error(err);
+			});
+	};
+	const getProductById = (id: string): void => {
+		Api.get(EProductsEndpoints.BASE + "/" + id, headers)
+			.then(res => setCurrentProduct(res.data))
+			.catch(err => {
+				error(err);
+			});
+	};
+	const getProductByCategory = (category: string): void => {
+		Api.get(EProductsEndpoints.BASE + "/" + category, headers)
+			.then(res => setProducts(res.data))
+			.catch(err => {
+				error(err);
+			});
+	};
 
 	return (
 		<ProductsContext.Provider
-			value={{ allProducts, genresProducts, createProduct }}
+			value={{
+                products,
+                currentProduct,
+				createProduct,
+				updateProduct,
+				deleteProduct,
+				getProductByCategory,
+				getProductById,
+				getAllProducts,
+			}}
 		>
 			{children}
 		</ProductsContext.Provider>
