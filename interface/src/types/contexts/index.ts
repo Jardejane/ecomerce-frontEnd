@@ -15,4 +15,5 @@ export interface AuthProviderData {
 export interface ProductsProviderData {
 	allProducts: IProduct[];
 	genresProducts: IProduct[];
+	createProduct: (data: IProduct) => void;
 }
