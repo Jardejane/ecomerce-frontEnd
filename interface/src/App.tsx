@@ -1,9 +1,9 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import theme from './assets/styles/theme';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import Router from './router';
+import { theme } from 'presentation';
+import { Router } from 'main';
 
 const queryClient = new QueryClient();
 
