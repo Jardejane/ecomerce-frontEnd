@@ -1,0 +1,19 @@
+{
+    "name": "interface",
+    "version": "0.1.0",
+    "private": true,
+    "main": "./interface/src/index.tsx",
+    "scripts": {
+      "start": "cd interface && npm start",
+      "build": "cd interface && npm build",
+      "test": "cd interface && npm test",
+      "eject": "cd interface && npm eject",
+      "install": "cd interface && npm i"
+    },
+    "repository": {
+		"type": "git",
+		"url": "git+https://github.com/Jardejane/ecomerce-frontEnd.git"
+	},
+    "license": "MIT"
+  }
+  
