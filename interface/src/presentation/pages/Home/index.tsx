@@ -1,7 +1,9 @@
-import { SHome, ProductsContainer } from "presentation";
+import { SHome, ProductsContainer, theme } from "presentation";
 
 export const Home = () => {
-	return <SHome>
-		<ProductsContainer />
-	</SHome>;
+	return (
+		<SHome theme={theme}>
+			<ProductsContainer />
+		</SHome>
+	);
 };
