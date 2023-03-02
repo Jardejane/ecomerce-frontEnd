@@ -1,5 +1,7 @@
-import { SHome } from "presentation";
+import { SHome, ProductsContainer } from "presentation";
 
 export const Home = () => {
-  return <SHome>teste de aplicativo</SHome>;
+	return <SHome>
+		<ProductsContainer />
+	</SHome>;
 };
