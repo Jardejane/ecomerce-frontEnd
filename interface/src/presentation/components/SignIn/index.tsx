@@ -110,23 +110,21 @@ export const SigIn = (): JSX.Element => {
 			<form name="Gate">
 				<div>
 					{!mode && (
-						<>
-							<Input
-								label="name"
-								placeholder="User Name"
-								type="text"
-								value={setValueName}
-							/>
-						</>
+						<Input
+							label="Email"
+							placeholder="mail@email.com"
+							type="email"
+							value={setValueEmail}
+						/>
 					)}
 					<Input
-						label="email"
-						placeholder="username2022@email.com"
-						type="email"
-						value={setValueEmail}
+						label="Name"
+						placeholder="username"
+						type="text"
+						value={setValueName}
 					/>
 					<Input
-						label="password"
+						label="Password"
 						placeholder="********"
 						type="password"
 						value={setValuePassword}
