@@ -81,7 +81,7 @@ export const SigIn = (): JSX.Element => {
 							(res: any) => res,
 						);
 						switch (sigin.status) {
-							case 200:
+							case 201:
 								login(sigin.data);
 								break;
 
