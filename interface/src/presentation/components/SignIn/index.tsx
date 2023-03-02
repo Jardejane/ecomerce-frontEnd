@@ -35,16 +35,15 @@ export const SigIn = (): JSX.Element => {
 		if (isValidName && isValidPassword) {
 			const data: IUser = {
 				username: valueName,
-				email: valueEmail,
 				password: valuePassword,
-				roles: ["user"],
 			};
 
 			switch (mode) {
 				case false:
 					const isValidEmail = validateEmail(valueEmail);
 					if (isValidEmail) {
-						data.username = valueName;
+						data.email = valueEmail;
+						data.roles = ["user"];
 						const register = await Api.post(
 							`/auth/register`,
 							data,
