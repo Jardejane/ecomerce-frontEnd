@@ -1,10 +1,12 @@
+import { useProducts } from "main";
 import {
 	SColumn,
 	HomeComponentsRow,
 	HomeComponentsTitle,
 	SHomeComponentsContainer,
-    SCardsConteiner,
+	SCardsConteiner,
 } from "presentation";
+import { useEffect, useState } from "react";
 import { IProduct } from "types";
 
 const data: IProduct[] = [
@@ -23,10 +25,29 @@ const data: IProduct[] = [
 ];
 
 export const ProductsContainer = (): JSX.Element => {
+	const { allProducts, genresProducts } = useProducts();
+
+	const [data, setData] = useState<IProduct[]>(allProducts);
+	const [selector, setSelector] = useState<boolean>(true);
+
+	useEffect(() => {
+		if (selector) {
+			setData(allProducts);
+		} else {
+			setData(genresProducts);
+		}
+	}, [selector]);
+
 	return (
 		<SHomeComponentsContainer>
 			<SColumn>
-				<HomeComponentsTitle>Produtos</HomeComponentsTitle>
+				<HomeComponentsTitle
+					onClick={() => {
+						setSelector(!selector);
+					}}
+				>
+					Produtos
+				</HomeComponentsTitle>
 				<HomeComponentsRow type="overflow">
 					{data ? (
 						data.map((product: IProduct, key: number) => (
