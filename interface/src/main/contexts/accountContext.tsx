@@ -5,15 +5,18 @@ const AuthContext = createContext<AuthProviderData>({} as AuthProviderData);
 
 export const AuthProvider = ({ children }: AllProvidersProps): JSX.Element => {
 	const [logged, setLogged] = useState<boolean>(false);
+	const [token, setToken] = useState<string>("");
 
 	const login = ({ access_token }: AuthResponse): void => {
 		localStorage.setItem("token", access_token);
 		setLogged(true);
+		setToken(access_token);
 	};
 
 	const logout = (): void => {
 		localStorage.clear();
 		setLogged(false);
+		setToken("")
 	};
 
 	// const checkTokenExpiration = (): void => {
@@ -54,6 +57,7 @@ export const AuthProvider = ({ children }: AllProvidersProps): JSX.Element => {
 				logged,
 				login,
 				logout,
+				token
 			}}
 		>
 			{children}

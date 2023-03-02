@@ -1,5 +1,7 @@
 import { AllProvidersProps, IProduct, ProductsProviderData } from "types";
 import { createContext, useContext, useState } from "react";
+import { Api, useAuth } from "main";
+import { error, success } from "presentation";
 
 const ProductsContext = createContext<ProductsProviderData>(
 	{} as ProductsProviderData,
@@ -8,6 +10,7 @@ const ProductsContext = createContext<ProductsProviderData>(
 export const ProductsProvider = ({
 	children,
 }: AllProvidersProps): JSX.Element => {
+	const { logged, token } = useAuth();
 	const allProducts: IProduct[] = [
 		{
 			name: "Best",
@@ -36,6 +39,31 @@ export const ProductsProvider = ({
 			category: "usual",
 		},
 	];
+
+	const createProduct = ({
+		name,
+		price,
+		category,
+		description,
+	}: IProduct) => {
+		if (logged && name && price && category && description) {
+			const data = { name, price, category, description };
+			const headers = {
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			};
+			Api.post(`/story/products/create`, data, headers)
+				.then((): void => {
+					success("Registrated");
+				})
+				.catch(err => {
+					error(err);
+				});
+		} else {
+			error("Invalid data");
+		}
+	};
 
 	// useEffect(() => {
 	// }, []);

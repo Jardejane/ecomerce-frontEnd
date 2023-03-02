@@ -9,6 +9,7 @@ export interface AuthProviderData {
 	logged: boolean;
 	login: (params: AuthResponse) => void;
 	logout: () => void;
+	token: string;
 }
 
 export interface ProductsProviderData {
