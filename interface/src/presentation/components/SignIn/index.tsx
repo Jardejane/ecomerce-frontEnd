@@ -30,10 +30,9 @@ export const SigIn = (): JSX.Element => {
 	const [validPasswordLength, setValidPasswordLength] = useState(false);
 
 	const action = async (): Promise<void> => {
-		const isValidEmail = validateEmail(valueEmail);
+		const isValidName = validateName(valueName);
 		const isValidPassword = validatePassword(valuePassword);
-
-		if (isValidEmail && isValidPassword) {
+		if (isValidName && isValidPassword) {
 			const data: IUser = {
 				username: valueName,
 				email: valueEmail,
@@ -43,8 +42,8 @@ export const SigIn = (): JSX.Element => {
 
 			switch (mode) {
 				case false:
-					const isValidName = validateName(valueName);
-					if (isValidName) {
+					const isValidEmail = validateEmail(valueEmail);
+					if (isValidEmail) {
 						data.username = valueName;
 						const register = await Api.post(
 							`/auth/register`,
