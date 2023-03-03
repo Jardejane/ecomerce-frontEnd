@@ -85,9 +85,9 @@ export const ProductsContainer = (): JSX.Element => {
 						>
 							❌
 						</div>
-						{editing ? (
-							<>
-								<div>edit mode</div>
+						{editing && (
+							<div className="UpdateItens">
+								<div>Update Product</div>
 								<Input
 									key={currentProduct.name}
 									label="Title"
@@ -118,8 +118,9 @@ export const ProductsContainer = (): JSX.Element => {
 									type="text"
 									value={setCategory}
 								/>
-							</>
-						) : (
+							</div>
+						)}
+						{!editing && (
 							<>
 								<h1 className="title">{currentProduct.name}</h1>
 								<p className="description">
@@ -154,6 +155,7 @@ export const ProductsContainer = (): JSX.Element => {
 									onClick={(): void => {
 										if (currentProduct._id) {
 											deleteProduct(currentProduct._id);
+											getAllProducts();
 										} else {
 											error("Cannot find Product");
 										}
@@ -176,6 +178,8 @@ export const ProductsContainer = (): JSX.Element => {
 												},
 												currentProduct._id,
 											);
+											setModal(!modal);
+											getAllProducts();
 										} else {
 											error("Cannot delete");
 										}

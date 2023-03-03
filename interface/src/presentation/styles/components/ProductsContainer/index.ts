@@ -81,7 +81,14 @@ export const SProductOverlay = styled.div`
 		margin: 0 5rem;
 		cursor: pointer;
 	}
-
+	.modal > .UpdateItens {
+		color: ${theme.colors.contrast1};
+		height: 65%;
+		display: flex;
+		flex-direction: column;
+		font-size: 0.8em;
+		gap: 0.5rem;
+	}
 	.category {
 		font-size: 0.5em;
 	}

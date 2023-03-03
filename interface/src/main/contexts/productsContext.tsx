@@ -60,7 +60,7 @@ export const ProductsProvider = ({
 			const data = { name, price, category, description };
 			Api.put(EProductsEndpoints.BASE + "/" + id, data, headers)
 				.then((): void => {
-					success("Updated");
+					success("Updated(reload your page)");
 				})
 				.catch(err => {
 					error(err);
