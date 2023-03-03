@@ -3,6 +3,7 @@ import styled, { css } from "styled-components/macro";
 
 export const SHome = styled.section`
 	${({ theme }) => css`
+		position: relative;
 		background-color: ${theme.colors.baseBg1};
 		width: 100vw;
 		min-height: 89vh;

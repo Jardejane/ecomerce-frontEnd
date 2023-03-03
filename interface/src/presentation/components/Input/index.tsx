@@ -1,22 +1,49 @@
-import { Blind, Values } from "presentation";
 import { useState } from "react";
+import { Blind, Values } from "presentation";
 
 interface InputType {
 	label: string;
 	type: string;
 	placeholder: string;
 	value: React.Dispatch<React.SetStateAction<string>>;
+	step?: number;
+	max?: number;
+	min?: number;
 }
 
 export const Input = ({
 	label,
+	placeholder,
 	type,
 	value,
-	placeholder,
+	step,
+	max,
+	min,
 }: InputType): JSX.Element => {
 	const [blind, setBlind] = useState<boolean>(true);
 
 	switch (type) {
+		case "number":
+			return (
+				<Values>
+					<label htmlFor={label}>{label}</label>
+					<input
+						id={`${label}_${type}_input`}
+						name={label}
+						placeholder={placeholder}
+						title={`Choose ${label}`}
+						type={type}
+						onChange={(e): void => {
+							e.stopPropagation();
+							value(e.target.value);
+						}}
+						step={step}
+						max={max}
+						min={min}
+					/>
+				</Values>
+			);
+
 		case "password":
 			return (
 				<Values>
@@ -24,10 +51,9 @@ export const Input = ({
 					<input
 						id={`${label}_${type}_input`}
 						name={label}
-						title={`Choose ${label}`}
 						placeholder={placeholder}
+						title={`Choose ${label}`}
 						type={blind ? `password` : `text`}
-						pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
 						onChange={(e): void => {
 							e.stopPropagation();
 							value(e.target.value);
@@ -48,10 +74,9 @@ export const Input = ({
 					<input
 						id={`${label}_${type}_input`}
 						name={label}
-						title={`Choose ${label}`}
 						placeholder={placeholder}
+						title={`Choose ${label}`}
 						type={type}
-						pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
 						onChange={(e): void => {
 							e.stopPropagation();
 							value(e.target.value);

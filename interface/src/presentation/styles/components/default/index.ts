@@ -47,6 +47,7 @@ export const SHomeComponentsRow = styled.div<IHomeComponentsRow>`
 	gap: 1rem;
 	justify-content: flex-start;
 	padding-bottom: 2rem;
+	gap: 5rem;
 
 	${({ type, align }): Interpolation<IHomeComponentsRow> => {
 		switch (type) {
