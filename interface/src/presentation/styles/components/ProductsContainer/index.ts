@@ -124,11 +124,14 @@ export const SProductOverlay = styled.div`
 	.modal > .settings > .update:hover {
 		background: ${theme.colors.primaryColor}77;
 	}
-	.create {
+	.modal > .settings > .create {
 		background: ${theme.colors.primaryColor}33;
+		height: 100%;
+		width: 100%;
+		border-radius: 3rem;
 		text-align: center;
 	}
-	.create:hover {
+	.modal > .settings > .create:hover {
 		background: ${theme.colors.primaryColor}77;
 	}
 `;

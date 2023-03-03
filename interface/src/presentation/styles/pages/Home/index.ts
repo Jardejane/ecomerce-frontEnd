@@ -20,13 +20,13 @@ export const SHome = styled.section`
 			background: ${theme.colors.baseBg2}77;
 			z-index: 2;
 			border-radius: 10rem;
-			padding: 3rem 1rem;
+			padding: 1.5rem 4rem;
 			height: 7rem;
 			font-size: 5rem;
 			font-weight: 700;
 			cursor: pointer;
-			box-shadow: 0 0 1rem 0.3rem ${theme.colors.contrast1}33,
-				inset 0 0 0.8rem 0 ${theme.colors.contrast1}77;
+			box-shadow: 0 0 1rem 0.3rem ${theme.colors.contrast1}77,
+				inset 0 0 0.8rem 0 ${theme.colors.primaryColor}77;
 		}
 
 		.selector:hover {
