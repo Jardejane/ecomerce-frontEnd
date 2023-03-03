@@ -53,6 +53,7 @@ export const UpperTab = ({ path }: MenuProps): JSX.Element => {
 										onClick={(): void => {
 											if (e._id) {
 												getProductById(e._id);
+												setSearch("");
 												setModal(!modal);
 											}
 											// setTimeout(
