@@ -9,32 +9,17 @@ import {
 import { useEffect, useState } from "react";
 import { IProduct } from "types";
 
-const data: IProduct[] = [
-	{
-		name: "Best",
-		description: "the best product",
-		price: 10.5,
-		category: "new",
-	},
-	{
-		name: "Not Too  Best",
-		description: "the not so best product",
-		price: 5.25,
-		category: "usual",
-	},
-];
-
 export const ProductsContainer = (): JSX.Element => {
-	const { allProducts, genresProducts } = useProducts();
+	const { products, currentProduct, getAllProducts, getProductByCategory } =
+		useProducts();
 
-	const [data, setData] = useState<IProduct[]>(allProducts);
 	const [selector, setSelector] = useState<boolean>(true);
 
 	useEffect(() => {
 		if (selector) {
-			setData(allProducts);
+			getAllProducts();
 		} else {
-			setData(genresProducts);
+			getProductByCategory("test");
 		}
 	}, [selector]);
 
@@ -49,8 +34,8 @@ export const ProductsContainer = (): JSX.Element => {
 					Produtos
 				</HomeComponentsTitle>
 				<HomeComponentsRow type="overflow">
-					{data ? (
-						data.map((product: IProduct, key: number) => (
+					{products ? (
+						products.map((product: IProduct, key: number) => (
 							<SCardsConteiner key={key}>
 								<h1>{product.name}</h1>
 								<h6>{product.category}</h6>
