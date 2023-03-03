@@ -1,5 +1,5 @@
 import { useAuth } from "main";
-import { Home, Login } from "presentation";
+import { Home, Login, Settings } from "presentation";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { ERoutePath } from "types";
 
@@ -14,7 +14,7 @@ export const Router = (): JSX.Element => {
 			{logged && (
 				<Route
 					path={ERoutePath.SETTINGS}
-					element={<div>Settings</div>}
+					element={<Settings />}
 				/>
 			)}
 			<Route

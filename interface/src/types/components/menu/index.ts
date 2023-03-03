@@ -1,5 +1,5 @@
 export declare type MenuProps = {
-	path: "/" | "settings" | "login";
+	path: "/" | "/settings" | "/login";
 };
 export interface MenuItemButtonProps {
 	active?: boolean;

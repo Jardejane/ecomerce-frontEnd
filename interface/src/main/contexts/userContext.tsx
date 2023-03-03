@@ -19,7 +19,7 @@ import { Api, useAuth } from "main";
 const UserContext = createContext<UserProviderData>({} as UserProviderData);
 
 export const UserProvider = ({ children }: AllProvidersProps): JSX.Element => {
-	const { login, headers, logged } = useAuth();
+	const { login, headers, logged, logout } = useAuth();
 
 	const [users, setUsers] = useState<IUserApi[]>([]);
 	const [user, setUser] = useState<IUserApi | undefined>();
@@ -113,7 +113,8 @@ export const UserProvider = ({ children }: AllProvidersProps): JSX.Element => {
 		if (logged) {
 			Api.put(EUserEndpoints.BASE + "/" + id, data, headers)
 				.then((): void => {
-					success("Updated");
+					success("Updated (You must reload your session)");
+					logout();
 				})
 				.catch(err => {
 					error(err);
@@ -127,6 +128,7 @@ export const UserProvider = ({ children }: AllProvidersProps): JSX.Element => {
 		Api.delete(EUserEndpoints.BASE + "/" + id, headers)
 			.then((): void => {
 				success("Deleted");
+				logout();
 			})
 			.catch(err => {
 				error(err);

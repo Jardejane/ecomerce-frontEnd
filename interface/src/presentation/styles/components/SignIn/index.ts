@@ -1,5 +1,6 @@
 import { theme } from "presentation/styles/theme";
-import styled, { keyframes } from "styled-components/macro";
+import styled, { css, Interpolation, keyframes } from "styled-components/macro";
+import { MenuItemButtonProps } from "types";
 
 const toRight = keyframes`
   0% {
@@ -13,7 +14,7 @@ const toRight = keyframes`
   opacity: 1;
  }`;
 
-export const SBackgroundForm = styled.div`
+export const SBackgroundForm = styled.div<MenuItemButtonProps>`
 	height: auto;
 	width: 75rem;
 	padding: 1em;
@@ -25,7 +26,14 @@ export const SBackgroundForm = styled.div`
 	justify-content: space-around;
 	align-content: center;
 	align-items: center;
-	animation: ${toRight} 2s normal;
+	${({ active }: MenuItemButtonProps): Interpolation<MenuItemButtonProps> => {
+		return (
+			!active &&
+			css`
+				animation: ${toRight} 2s normal;
+			`
+		);
+	}}
 
 	h1 {
 		font-size: 4em;
