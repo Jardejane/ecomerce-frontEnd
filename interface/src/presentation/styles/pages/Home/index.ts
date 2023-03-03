@@ -12,5 +12,21 @@ export const SHome = styled.section`
 		justify-content: center;
 		align-items: flex-start;
 		padding-top: 11vh;
+
+		.selector {
+			position: absolute;
+			top: 12vh;
+			left: 10%;
+			background: ${theme.colors.baseBg2}77;
+			z-index: 2;
+			border-radius: 10rem;
+			padding: 3rem 1rem;
+			height: 7rem;
+			font-size: 5rem;
+			font-weight: 700;
+			cursor: pointer;
+			box-shadow: 0 0 1rem 0.3rem ${theme.colors.contrast1}33,
+				inset 0 0 0.8rem 0 ${theme.colors.contrast1}77;
+		}
 	`}
 `;
