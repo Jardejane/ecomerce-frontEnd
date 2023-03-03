@@ -13,7 +13,7 @@ export const CreateProduct = (): JSX.Element => {
 		<SProductOverlay>
 			<div className="modal">
 				<div className="UpdateItens">
-					<div>Update Product</div>
+					<div>Create Product</div>
 					<Input
 						key={"1"}
 						label="Title"

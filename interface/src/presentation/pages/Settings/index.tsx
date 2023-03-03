@@ -16,7 +16,7 @@ export const Settings = (): JSX.Element => {
 					setSelect(!select);
 				}}
 			>
-				{select ? "UPDATE USER" : "CREATE NEW PRODUCT"}
+				{select ? "UPDATE USER" : "NEW PRODUCT"}
 			</div>
 		</SHome>
 	);

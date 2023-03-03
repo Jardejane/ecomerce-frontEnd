@@ -28,5 +28,9 @@ export const SHome = styled.section`
 			box-shadow: 0 0 1rem 0.3rem ${theme.colors.contrast1}33,
 				inset 0 0 0.8rem 0 ${theme.colors.contrast1}77;
 		}
+
+		.selector:hover {
+			background: ${theme.colors.primaryColor}77;
+		}
 	`}
 `;
