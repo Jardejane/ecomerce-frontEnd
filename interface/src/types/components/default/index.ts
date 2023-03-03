@@ -1,10 +1,8 @@
-export declare type MenuProps = {
-	path: "/" | "settings" | "login";
-};
-export interface MenuItemButtonProps {
-	active?: boolean;
+export interface IHomeComponentsContainer {
+	scroll?: "side" | "down";
 }
-export interface MenuItemProps {
-	logout?: boolean;
-	active?: boolean;
+
+export interface IHomeComponentsRow {
+	type?: "overflow" | "mini";
+	align?: "start" | "center";
 }
