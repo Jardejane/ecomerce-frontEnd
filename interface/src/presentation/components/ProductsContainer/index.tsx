@@ -21,10 +21,11 @@ export const ProductsContainer = (): JSX.Element => {
 		getProductById,
 		deleteProduct,
 		updateProduct,
+		modal,
+		setModal
 	} = useProducts();
 
 	const [selector, setSelector] = useState<boolean>(true);
-	const [modal, setModal] = useState<boolean>(false);
 	const [editing, setEditing] = useState<boolean>(false);
 	const [name, setName] = useState<string>("");
 	const [price, setPrice] = useState<string>("");

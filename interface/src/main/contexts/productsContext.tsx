@@ -12,6 +12,7 @@ export const ProductsProvider = ({
 	children,
 }: AllProvidersProps): JSX.Element => {
 	const { logged, headers } = useAuth();
+	const [modal, setModal] = useState<boolean>(false);
 
 	const allProducts: IProduct[] = [
 		{
@@ -112,6 +113,8 @@ export const ProductsProvider = ({
 				getProductByCategory,
 				getProductById,
 				getAllProducts,
+				modal,
+				setModal,
 			}}
 		>
 			{children}

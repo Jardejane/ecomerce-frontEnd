@@ -15,7 +15,7 @@ export const UpperTab = ({ path }: MenuProps): JSX.Element => {
 	const navigate: NavigateFunction = useNavigate();
 
 	const { logout } = useAuth();
-	const { getProductById, products, getAllProducts } = useProducts();
+	const { getProductById, products, getAllProducts, modal, setModal } = useProducts();
 	const [allProductsSwitch, setAllProductsSwitch] = useState<IProduct[]>([]);
 	const [active, setActive] = useState(false);
 	const [search, setSearch] = useState("");
@@ -51,7 +51,10 @@ export const UpperTab = ({ path }: MenuProps): JSX.Element => {
 									<span
 										key={i}
 										onClick={(): void => {
-											if (e._id) getProductById(e._id);
+											if (e._id) {
+												getProductById(e._id);
+												setModal(!modal);
+											}
 											// setTimeout(
 											// 	() => navigate(`/game/${e.id}`),
 											// 	2000,
