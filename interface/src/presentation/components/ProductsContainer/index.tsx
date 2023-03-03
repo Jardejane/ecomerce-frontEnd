@@ -65,7 +65,7 @@ export const ProductsContainer = (): JSX.Element => {
 									<h1>{product.name}</h1>
 									<h6>{product.category}</h6>
 									<p>{product.description}</p>
-									<span>{product.price}</span>
+									<span>{product.price.toFixed(2)}</span>
 								</SCardsConteiner>
 							))
 						) : (
