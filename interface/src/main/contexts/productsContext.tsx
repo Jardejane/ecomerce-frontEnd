@@ -20,12 +20,14 @@ export const ProductsProvider = ({
 			description: "the best product",
 			price: 10.5,
 			category: "new",
+			image: "",
 		},
 		{
 			name: "Not Too  Best",
 			description: "the not so best product",
 			price: 5.25,
 			category: "usual",
+			image: "",
 		},
 	];
 

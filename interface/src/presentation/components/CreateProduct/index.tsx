@@ -8,6 +8,7 @@ export const CreateProduct = (): JSX.Element => {
 	const [price, setPrice] = useState<string>("");
 	const [description, setDescription] = useState<string>("");
 	const [category, setCategory] = useState<string>("");
+	const [image, setImage] = useState<string>("");
 
 	return (
 		<SProductOverlay>
@@ -42,6 +43,13 @@ export const CreateProduct = (): JSX.Element => {
 						type="text"
 						value={setCategory}
 					/>
+					<Input
+						key={"1"}
+						label="Image"
+						placeholder="Product Image"
+						type="text"
+						value={setImage}
+					/>
 				</div>
 
 				<div className="settings">
@@ -53,6 +61,7 @@ export const CreateProduct = (): JSX.Element => {
 								description,
 								category,
 								price: Number(price),
+								image,
 							});
 						}}
 					>

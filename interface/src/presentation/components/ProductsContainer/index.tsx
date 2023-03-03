@@ -32,6 +32,7 @@ export const ProductsContainer = (): JSX.Element => {
 	const [price, setPrice] = useState<string>("");
 	const [description, setDescription] = useState<string>("");
 	const [category, setCategory] = useState<string>("");
+	const [image, setImage] = useState<string>("");
 
 	return (
 		<>
@@ -43,7 +44,7 @@ export const ProductsContainer = (): JSX.Element => {
 								getAllProducts();
 							}}
 						>
-							Produtos
+							All
 						</SHomeComponentsTitle>
 						{categories.map((e: string, i: number) => {
 							return (
@@ -73,6 +74,10 @@ export const ProductsContainer = (): JSX.Element => {
 									<h1>{product.name}</h1>
 									<h6>{product.category}</h6>
 									<p>{product.description}</p>
+									<img
+										alt={product.name}
+										src={product.image}
+									></img>
 									<span>{product.price.toFixed(2)}</span>
 								</SCardsConteiner>
 							))
@@ -126,6 +131,13 @@ export const ProductsContainer = (): JSX.Element => {
 									type="text"
 									value={setCategory}
 								/>
+								<Input
+									key={currentProduct.image}
+									label="Image"
+									placeholder={currentProduct.image}
+									type="text"
+									value={setImage}
+								/>
 							</div>
 						)}
 						{!editing && (
@@ -134,6 +146,10 @@ export const ProductsContainer = (): JSX.Element => {
 								<p className="description">
 									{currentProduct.description}
 								</p>
+								<img
+									src={currentProduct.image}
+									alt={currentProduct.name}
+								/>
 								<div className="footer">
 									<span className="price">
 										Price: <br />
@@ -163,6 +179,7 @@ export const ProductsContainer = (): JSX.Element => {
 									onClick={(): void => {
 										if (currentProduct._id) {
 											deleteProduct(currentProduct._id);
+											setModal(!modal);
 											getAllProducts();
 										} else {
 											error("Cannot find Product");
@@ -183,6 +200,7 @@ export const ProductsContainer = (): JSX.Element => {
 													description,
 													price: Number(price),
 													category,
+													image,
 												},
 												currentProduct._id,
 											);

@@ -32,6 +32,11 @@ export const SCardsConteiner = styled.div`
 	box-shadow: inset 0 0 2rem 0.5rem ${theme.colors.secondaryColor},
 		0 0 1.5rem 0rem ${theme.colors.secondaryColor};
 	cursor: pointer;
+
+	img {
+		aspect-ratio: 1;
+		width: 20%;
+	}
 `;
 
 export const SProductOverlay = styled.div`
@@ -66,6 +71,11 @@ export const SProductOverlay = styled.div`
 		justify-content: space-evenly;
 		align-items: center;
 		gap: 3rem;
+
+		img {
+			aspect-ratio: 1;
+			width: 20%;
+		}
 	}
 	.modal > div {
 		width: 90%;
