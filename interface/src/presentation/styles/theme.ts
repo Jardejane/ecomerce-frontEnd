@@ -3,7 +3,7 @@ import { constants } from "./constants";
 import { mixins } from "./mixins";
 
 export const theme = {
-  colors,
-  constants,
-  mixins,
+	colors,
+	constants,
+	mixins,
 } as const;

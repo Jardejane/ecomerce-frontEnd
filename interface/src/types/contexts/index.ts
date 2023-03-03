@@ -48,6 +48,7 @@ export interface ProductsProviderData {
 	getProductByCategory: (category: string) => void;
 	getProductById: (id: string) => void;
 	getAllProducts: () => void;
+	categories: string[];
 	modal: boolean;
 	setModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
