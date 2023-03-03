@@ -8,8 +8,9 @@ import {
 	SProductOverlay,
 	error,
 	Input,
+	SHomeComponentsSelectors,
 } from "presentation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { IProduct } from "types";
 
 export const ProductsContainer = (): JSX.Element => {
@@ -22,35 +23,41 @@ export const ProductsContainer = (): JSX.Element => {
 		deleteProduct,
 		updateProduct,
 		modal,
-		setModal
+		setModal,
+		categories,
 	} = useProducts();
 
-	const [selector, setSelector] = useState<boolean>(true);
 	const [editing, setEditing] = useState<boolean>(false);
 	const [name, setName] = useState<string>("");
 	const [price, setPrice] = useState<string>("");
 	const [description, setDescription] = useState<string>("");
 	const [category, setCategory] = useState<string>("");
 
-	useEffect(() => {
-		if (selector) {
-			getAllProducts();
-		} else {
-			getProductByCategory("test");
-		}
-	}, [selector]);
-
 	return (
 		<>
 			<SHomeComponentsContainer>
 				<SColumn>
-					<SHomeComponentsTitle
-						onClick={(): void => {
-							setSelector(!selector);
-						}}
-					>
-						Produtos
-					</SHomeComponentsTitle>
+					<SHomeComponentsSelectors>
+						<SHomeComponentsTitle
+							onClick={(): void => {
+								getAllProducts();
+							}}
+						>
+							Produtos
+						</SHomeComponentsTitle>
+						{categories.map((e: string, i: number) => {
+							return (
+								<SHomeComponentsTitle
+									key={i}
+									onClick={(): void => {
+										getProductByCategory(e);
+									}}
+								>
+									{e}
+								</SHomeComponentsTitle>
+							);
+						})}
+					</SHomeComponentsSelectors>
 					<SHomeComponentsRow type="overflow">
 						{products ? (
 							products.map((product: IProduct, key: number) => (

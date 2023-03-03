@@ -1,3 +1,4 @@
+import { theme } from "presentation/styles/theme";
 import styled, { css, Interpolation } from "styled-components/macro";
 import { IHomeComponentsContainer, IHomeComponentsRow } from "types";
 
@@ -32,10 +33,26 @@ export const SHomeComponentsContainer = styled.div<IHomeComponentsContainer>`
 		}
 	}}
 `;
-
+export const SHomeComponentsSelectors = styled.div`
+	width: 100%;
+	min-height: 15rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	gap: 5rem;
+`;
 export const SHomeComponentsTitle = styled.h2`
 	font-size: 20px;
+	width: 25rem;
 	margin-bottom: 10px;
+	border-radius: 3rem;
+	padding: 2rem 3rem;
+	text-align: center;
+	cursor: pointer;
+	box-shadow: 0 0 1rem 0.3rem ${theme.colors.secondaryColor}55,
+		inset 0 0 2rem 0.5rem ${theme.colors.secondaryColor}77;
 `;
 
 export const SHomeComponentsRow = styled.div<IHomeComponentsRow>`

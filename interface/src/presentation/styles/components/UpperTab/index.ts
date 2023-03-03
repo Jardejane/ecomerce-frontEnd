@@ -10,6 +10,7 @@ const SGrownAnimation = keyframes`
 export const SMenuContainer = styled.header`
 	position: fixed;
 	top: 0;
+	font-size: 7rem;
 	width: 100%;
 	height: 10vh;
 	background-color: ${theme.colors.primaryColorOpacity};
@@ -36,6 +37,7 @@ export const SMenuContent = styled.div`
 		display: flex;
 		justify-content: flex-end;
 		align-items: center;
+		cursor: pointer;
 
 		label {
 			display: none;

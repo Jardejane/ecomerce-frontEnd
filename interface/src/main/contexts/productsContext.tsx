@@ -1,5 +1,5 @@
 import { AllProvidersProps, IProduct, ProductsProviderData } from "types";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { Api, useAuth } from "main";
 import { error, success } from "presentation";
 import { EProductsEndpoints } from "types/api";
@@ -30,6 +30,7 @@ export const ProductsProvider = ({
 	];
 
 	const [products, setProducts] = useState<IProduct[]>(allProducts);
+	const [categories, setCategories] = useState<string[]>([]);
 	const [currentProduct, setCurrentProduct] = useState<IProduct>(
 		allProducts[0],
 	);
@@ -80,6 +81,16 @@ export const ProductsProvider = ({
 			});
 	};
 
+	const getAllCategories = (): void => {
+		const c = products.map(({ category }) => {
+			return category;
+		});
+		const cat = c.filter((e, i, a) => {
+			return i === a.indexOf(e);
+		});
+		setCategories(cat);
+	};
+
 	const getAllProducts = (): void => {
 		Api.get(EProductsEndpoints.BASE, headers)
 			.then(res => setProducts(res.data))
@@ -102,6 +113,14 @@ export const ProductsProvider = ({
 			});
 	};
 
+	useEffect((): void => {
+		getAllProducts();
+	}, []);
+
+	useEffect((): void => {
+		getAllCategories();
+	}, [products]);
+
 	return (
 		<ProductsContext.Provider
 			value={{
@@ -113,6 +132,7 @@ export const ProductsProvider = ({
 				getProductByCategory,
 				getProductById,
 				getAllProducts,
+				categories,
 				modal,
 				setModal,
 			}}
