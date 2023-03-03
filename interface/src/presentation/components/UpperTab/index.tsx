@@ -15,8 +15,15 @@ export const UpperTab = ({ path }: MenuProps): JSX.Element => {
 	const navigate: NavigateFunction = useNavigate();
 
 	const { logout } = useAuth();
-	const { getProductById, products, getAllProducts, modal, setModal } =
-		useProducts();
+	const {
+		getProductById,
+		products,
+		getAllProducts,
+		modal,
+		setModal,
+		setCreateOn,
+		createOn,
+	} = useProducts();
 	const [allProductsSwitch, setAllProductsSwitch] = useState<IProduct[]>([]);
 	const [active, setActive] = useState(false);
 	const [search, setSearch] = useState("");
@@ -94,6 +101,14 @@ export const UpperTab = ({ path }: MenuProps): JSX.Element => {
 							}}
 						>
 							Settings
+						</li>
+						<li
+							onClick={(): void => {
+								setCreateOn(!createOn);
+								setActive(!active);
+							}}
+						>
+							Create new Game
 						</li>
 						<li
 							onClick={(): void => {

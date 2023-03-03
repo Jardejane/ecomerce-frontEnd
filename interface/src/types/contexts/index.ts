@@ -51,4 +51,6 @@ export interface ProductsProviderData {
 	categories: string[];
 	modal: boolean;
 	setModal: React.Dispatch<React.SetStateAction<boolean>>;
+	createOn: boolean;
+	setCreateOn: React.Dispatch<React.SetStateAction<boolean>>;
 }

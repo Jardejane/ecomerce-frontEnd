@@ -3,7 +3,7 @@ import { Input, SProductOverlay } from "presentation";
 import { useState } from "react";
 
 export const CreateProduct = (): JSX.Element => {
-	const { createProduct } = useProducts();
+	const { createProduct, createOn, setCreateOn } = useProducts();
 	const [name, setName] = useState<string>("");
 	const [price, setPrice] = useState<string>("");
 	const [description, setDescription] = useState<string>("");
@@ -54,7 +54,15 @@ export const CreateProduct = (): JSX.Element => {
 
 				<div className="settings">
 					<div
-						className="create"
+						className="update"
+						onClick={(): void => {
+							setCreateOn(!createOn);
+						}}
+					>
+						Close
+					</div>
+					<div
+						className="delete"
 						onClick={(): void => {
 							createProduct({
 								name,
@@ -63,6 +71,7 @@ export const CreateProduct = (): JSX.Element => {
 								price: Number(price),
 								image,
 							});
+							setCreateOn(!createOn);
 						}}
 					>
 						New Product

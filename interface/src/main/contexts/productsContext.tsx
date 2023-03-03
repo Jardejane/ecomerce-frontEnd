@@ -13,7 +13,7 @@ export const ProductsProvider = ({
 }: AllProvidersProps): JSX.Element => {
 	const { logged, headers } = useAuth();
 	const [modal, setModal] = useState<boolean>(false);
-
+	const [createOn, setCreateOn] = useState(false);
 	const allProducts: IProduct[] = [
 		{
 			name: "Best",
@@ -138,6 +138,8 @@ export const ProductsProvider = ({
 				categories,
 				modal,
 				setModal,
+				createOn,
+				setCreateOn,
 			}}
 		>
 			{children}

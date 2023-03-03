@@ -59,7 +59,7 @@ export const SProductOverlay = styled.div`
 		text-align: center;
 	}
 	.modal {
-		height: 80rem;
+		height: 80%;
 		width: 70rem;
 		border-radius: 3rem;
 		box-shadow: 0 0 3rem 0 ${theme.colors.secondaryColor}77,
@@ -70,11 +70,11 @@ export const SProductOverlay = styled.div`
 		flex-direction: column;
 		justify-content: space-evenly;
 		align-items: center;
-		gap: 3rem;
+		gap: 1rem;
 
 		img {
 			aspect-ratio: 1;
-			width: 20%;
+			width: 50%;
 		}
 	}
 	.modal > div {
