@@ -1,14 +1,5 @@
-// import { theme } from "presentation";
 import styled, { css, Interpolation } from "styled-components/macro";
-
-export interface IHomeComponentsContainer {
-	scroll?: "side" | "down";
-}
-
-export interface IHomeComponentsRow {
-	type?: "overflow" | "mini";
-	align?: "start" | "center";
-}
+import { IHomeComponentsContainer, IHomeComponentsRow } from "types";
 
 export const SHomeComponentsContainer = styled.div<IHomeComponentsContainer>`
 	box-shadow: inset 0 0 0.25rem 0.5rem #00000022;
@@ -42,12 +33,12 @@ export const SHomeComponentsContainer = styled.div<IHomeComponentsContainer>`
 	}}
 `;
 
-export const HomeComponentsTitle = styled.h2`
+export const SHomeComponentsTitle = styled.h2`
 	font-size: 20px;
 	margin-bottom: 10px;
 `;
 
-export const HomeComponentsRow = styled.div<IHomeComponentsRow>`
+export const SHomeComponentsRow = styled.div<IHomeComponentsRow>`
 	height: calc(100% - 30px);
 	width: 100%;
 	display: flex;
@@ -113,14 +104,14 @@ export const HomeComponentsRow = styled.div<IHomeComponentsRow>`
 	}
 `;
 
-export const ArrowBack = styled.div`
+export const SArrowBack = styled.div`
 	font-size: 40px;
 	border: solid 1px #fff;
 	border: none;
 	cursor: pointer;
 `;
 
-export const ArrowFoward = styled.div`
+export const SArrowFoward = styled.div`
 	font-size: 40px;
 	border: solid 1px #fff;
 	border: none;
