@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }: AllProvidersProps): JSX.Element => {
 	const logout = (): void => {
 		localStorage.clear();
 		setLogged(false);
-		setToken("")
+		setToken("");
 	};
 
 	// const checkTokenExpiration = (): void => {
@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }: AllProvidersProps): JSX.Element => {
 				logged,
 				login,
 				logout,
-				token
+				token,
 			}}
 		>
 			{children}

@@ -19,7 +19,7 @@ export const ProductsProvider = ({
 		},
 	};
 
-  	const allProducts: IProduct[] = [
+	const allProducts: IProduct[] = [
 		{
 			name: "Best",
 			description: "the best product",
@@ -33,10 +33,11 @@ export const ProductsProvider = ({
 			category: "usual",
 		},
 	];
-    
-    const [products, setProducts] = useState<IProduct[]>(allProducts);
-    const [currentProduct, setCurrentProduct] = useState<IProduct>(allProducts[0]);
 
+	const [products, setProducts] = useState<IProduct[]>(allProducts);
+	const [currentProduct, setCurrentProduct] = useState<IProduct>(
+		allProducts[0],
+	);
 
 	const createProduct = ({
 		name,
@@ -99,7 +100,7 @@ export const ProductsProvider = ({
 			});
 	};
 	const getProductByCategory = (category: string): void => {
-		Api.get(EProductsEndpoints.BASE + "/" + category, headers)
+		Api.get(EProductsEndpoints.GETBYCAT + "/" + category, headers)
 			.then(res => setProducts(res.data))
 			.catch(err => {
 				error(err);
@@ -109,8 +110,8 @@ export const ProductsProvider = ({
 	return (
 		<ProductsContext.Provider
 			value={{
-                products,
-                currentProduct,
+				products,
+				currentProduct,
 				createProduct,
 				updateProduct,
 				deleteProduct,
