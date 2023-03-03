@@ -1,8 +1,8 @@
 import { useProducts } from "main";
 import {
 	SColumn,
-	HomeComponentsRow,
-	HomeComponentsTitle,
+	SHomeComponentsRow,
+	SHomeComponentsTitle,
 	SHomeComponentsContainer,
 	SCardsConteiner,
 } from "presentation";
@@ -26,14 +26,14 @@ export const ProductsContainer = (): JSX.Element => {
 	return (
 		<SHomeComponentsContainer>
 			<SColumn>
-				<HomeComponentsTitle
+				<SHomeComponentsTitle
 					onClick={() => {
 						setSelector(!selector);
 					}}
 				>
 					Produtos
-				</HomeComponentsTitle>
-				<HomeComponentsRow type="overflow">
+				</SHomeComponentsTitle>
+				<SHomeComponentsRow type="overflow">
 					{products ? (
 						products.map((product: IProduct, key: number) => (
 							<SCardsConteiner key={key}>
@@ -51,7 +51,7 @@ export const ProductsContainer = (): JSX.Element => {
 					) : (
 						<></>
 					)}
-				</HomeComponentsRow>
+				</SHomeComponentsRow>
 			</SColumn>
 		</SHomeComponentsContainer>
 	);
