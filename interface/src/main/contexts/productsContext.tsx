@@ -42,9 +42,10 @@ export const ProductsProvider = ({
 		price,
 		category,
 		description,
+		image,
 	}: IProduct): void => {
-		if (logged && name && price && category && description) {
-			const data = { name, price, category, description };
+		if (logged && name && price && category && description && image) {
+			const data = { name, price, category, description, image };
 			Api.post(EProductsEndpoints.CREATE, data, headers)
 				.then((): void => {
 					success("Registrated");
@@ -57,11 +58,11 @@ export const ProductsProvider = ({
 		}
 	};
 	const updateProduct = (
-		{ name, price, category, description }: IProduct,
+		{ name, price, category, description, image }: IProduct,
 		id: string,
 	): void => {
 		if (logged) {
-			const data = { name, price, category, description };
+			const data = { name, price, category, description, image };
 			Api.put(EProductsEndpoints.BASE + "/" + id, data, headers)
 				.then((): void => {
 					success("Updated(reload your page)");
