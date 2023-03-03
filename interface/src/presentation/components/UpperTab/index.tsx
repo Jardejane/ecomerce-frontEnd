@@ -108,7 +108,7 @@ export const UpperTab = ({ path }: MenuProps): JSX.Element => {
 								setActive(!active);
 							}}
 						>
-							Create new Game
+							Create new Product
 						</li>
 						<li
 							onClick={(): void => {
