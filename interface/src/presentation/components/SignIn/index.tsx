@@ -18,7 +18,7 @@ import {
 import { Api, useAuth } from "main";
 import { IUser } from "types";
 
-export const SigIn = (): JSX.Element => {
+export const SignIn = (): JSX.Element => {
 	const { login } = useAuth();
 
 	const [mode, setMode] = useState(true);

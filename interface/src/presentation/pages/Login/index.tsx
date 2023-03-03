@@ -1,9 +1,9 @@
-import { SHome, SigIn, theme } from "presentation";
+import { SHome, SignIn, theme } from "presentation";
 
 export const Login = () => {
 	return (
 		<SHome theme={theme}>
-			<SigIn />
+			<SignIn />
 		</SHome>
 	);
 };
