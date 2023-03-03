@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { AuthResponse, IProduct } from "types";
+import { AuthResponse, IProduct, IUser, IUserApi } from "types";
 
 export interface AllProvidersProps {
 	children: ReactNode;
@@ -10,6 +10,33 @@ export interface AuthProviderData {
 	login: (params: AuthResponse) => void;
 	logout: () => void;
 	token: string;
+	headers: IHeaders;
+}
+
+export interface IHeaders {
+	headers: {
+		Authorization: string;
+	};
+}
+
+export interface UserProviderData {
+	user: IUserApi | undefined;
+	valueName: string;
+	valueEmail: string;
+	valuePassword: string;
+	mode: boolean;
+	validPasswordCharacters: boolean;
+	validPasswordLength: boolean;
+	setValueName: React.Dispatch<React.SetStateAction<string>>;
+	setValueEmail: React.Dispatch<React.SetStateAction<string>>;
+	setValuePassword: React.Dispatch<React.SetStateAction<string>>;
+	setMode: React.Dispatch<React.SetStateAction<boolean>>;
+	setValidPasswordCharacters: React.Dispatch<React.SetStateAction<boolean>>;
+	setValidPasswordLength: React.Dispatch<React.SetStateAction<boolean>>;
+	action: () => Promise<void>;
+	getUsers: () => void;
+	updateUser: (data: IUser, id: string) => void;
+	deleteUser: (id: string) => void;
 }
 
 export interface ProductsProviderData {

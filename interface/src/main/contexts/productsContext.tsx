@@ -11,13 +11,7 @@ const ProductsContext = createContext<ProductsProviderData>(
 export const ProductsProvider = ({
 	children,
 }: AllProvidersProps): JSX.Element => {
-	const { logged, token } = useAuth();
-
-	const headers = {
-		headers: {
-			Authorization: `Bearer ${token}`,
-		},
-	};
+	const { logged, headers } = useAuth();
 
 	const allProducts: IProduct[] = [
 		{

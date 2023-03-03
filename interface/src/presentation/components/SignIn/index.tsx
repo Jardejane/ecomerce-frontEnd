@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
 	SBackgroundForm,
 	SSubmitButtom,
@@ -6,96 +7,24 @@ import {
 	SContainerVerification,
 	SVerificationResponse,
 } from "presentation";
-import { useEffect, useState } from "react";
-import {
-	error,
-	Input,
-	isPw,
-	validateEmail,
-	validateName,
-	validatePassword,
-} from "presentation";
-import { Api, useAuth } from "main";
-import { IUser } from "types";
+import { useEffect } from "react";
+import { Input, isPw } from "presentation";
+import { useUser } from "main";
 
 export const SignIn = (): JSX.Element => {
-	const { login } = useAuth();
-
-	const [mode, setMode] = useState(true);
-	const [valueName, setValueName] = useState("");
-	const [valueEmail, setValueEmail] = useState("");
-	const [valuePassword, setValuePassword] = useState("");
-	const [validPasswordCharacters, setValidPasswordCharacters] =
-		useState(false);
-	const [validPasswordLength, setValidPasswordLength] = useState(false);
-
-	const action = async (): Promise<void> => {
-		const isValidName = validateName(valueName);
-		const isValidPassword = validatePassword(valuePassword);
-		if (isValidName && isValidPassword) {
-			const data: IUser = {
-				username: valueName,
-				password: valuePassword,
-			};
-
-			switch (mode) {
-				case false:
-					const isValidEmail = validateEmail(valueEmail);
-					if (isValidEmail) {
-						data.email = valueEmail;
-						data.roles = ["user"];
-						const register = await Api.post(
-							`/auth/register`,
-							data,
-						).then((res: any) => res);
-						switch (register.status) {
-							case 201:
-								delete data.email;
-								delete data.roles;
-								console.log(data);
-								const loginAfterRegister = await Api.post(
-									`/auth/login`,
-									data,
-								).then((res: any) => res);
-								switch (loginAfterRegister.status) {
-									case 201:
-										login(loginAfterRegister.data);
-										break;
-
-									default:
-										error("couldn't login after register");
-										break;
-								}
-								break;
-
-							default:
-								error("couldn't register");
-								break;
-						}
-					}
-					break;
-
-				case true:
-					try {
-						const sigin = await Api.post(`/auth/login`, data).then(
-							(res: any) => res,
-						);
-						switch (sigin.status) {
-							case 201:
-								login(sigin.data);
-								break;
-
-							default:
-								error("Try again with correct credentials");
-								break;
-						}
-					} catch (err) {
-						error("Try again with correct credentials");
-					}
-					break;
-			}
-		}
-	};
+	const {
+		mode,
+		setMode,
+		valuePassword,
+		setValuePassword,
+		setValueEmail,
+		setValueName,
+		action,
+		validPasswordLength,
+		validPasswordCharacters,
+		setValidPasswordCharacters,
+		setValidPasswordLength,
+	} = useUser();
 
 	useEffect(() => {
 		setValidPasswordCharacters(isPw.test(valuePassword));

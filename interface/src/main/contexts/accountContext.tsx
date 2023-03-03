@@ -1,4 +1,9 @@
-import { AllProvidersProps, AuthResponse, AuthProviderData } from "types";
+import {
+	AllProvidersProps,
+	AuthResponse,
+	AuthProviderData,
+	IHeaders,
+} from "types";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const AuthContext = createContext<AuthProviderData>({} as AuthProviderData);
@@ -6,11 +11,26 @@ const AuthContext = createContext<AuthProviderData>({} as AuthProviderData);
 export const AuthProvider = ({ children }: AllProvidersProps): JSX.Element => {
 	const [logged, setLogged] = useState<boolean>(false);
 	const [token, setToken] = useState<string>("");
+	const [headers, setHeaders] = useState<IHeaders>({
+		headers: {
+			Authorization: `Bearer string`,
+		},
+	});
+
+	const setHeader = (access_token: string): void => {
+		const header = {
+			headers: {
+				Authorization: `Bearer ${access_token}`,
+			},
+		};
+		setHeaders(header);
+	};
 
 	const login = ({ access_token }: AuthResponse): void => {
 		localStorage.setItem("token", access_token);
 		setLogged(true);
 		setToken(access_token);
+		setHeader(access_token);
 	};
 
 	const logout = (): void => {
@@ -46,8 +66,10 @@ export const AuthProvider = ({ children }: AllProvidersProps): JSX.Element => {
 	// };
 
 	useEffect(() => {
-		const token = localStorage.getItem("token");
-		if (token) setLogged(true);
+		const currentToken = localStorage.getItem("token");
+		if (currentToken) {
+			setLogged(true), setHeader(currentToken);
+		}
 		// if (token) checkTokenExpiration();
 	}, []);
 
@@ -58,6 +80,7 @@ export const AuthProvider = ({ children }: AllProvidersProps): JSX.Element => {
 				login,
 				logout,
 				token,
+				headers,
 			}}
 		>
 			{children}
