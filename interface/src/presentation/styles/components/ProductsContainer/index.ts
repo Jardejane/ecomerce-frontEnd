@@ -41,7 +41,7 @@ export const SCardsConteiner = styled.div`
 
 	img {
 		aspect-ratio: 1;
-		width: 40%;
+		width: 80%;
 	}
 `;
 
