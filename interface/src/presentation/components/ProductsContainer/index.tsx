@@ -179,8 +179,8 @@ export const ProductsContainer = (): JSX.Element => {
 									onClick={(): void => {
 										if (currentProduct._id) {
 											deleteProduct(currentProduct._id);
-											setModal(!modal);
 											getAllProducts();
+											setModal(!modal);
 										} else {
 											error("Cannot find Product");
 										}
@@ -204,8 +204,8 @@ export const ProductsContainer = (): JSX.Element => {
 												},
 												currentProduct._id,
 											);
-											setModal(!modal);
 											getAllProducts();
+											setModal(!modal);
 										} else {
 											error("Cannot delete");
 										}
