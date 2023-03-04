@@ -3,7 +3,8 @@ import { Input, SProductOverlay } from "presentation";
 import { useState } from "react";
 
 export const CreateProduct = (): JSX.Element => {
-	const { createProduct, createOn, setCreateOn } = useProducts();
+	const { createProduct, createOn, setCreateOn, getAllProducts } =
+		useProducts();
 	const [name, setName] = useState<string>("");
 	const [price, setPrice] = useState<string>("");
 	const [description, setDescription] = useState<string>("");
@@ -72,6 +73,7 @@ export const CreateProduct = (): JSX.Element => {
 								image,
 							});
 							setCreateOn(!createOn);
+							getAllProducts();
 						}}
 					>
 						New Product
