@@ -4,7 +4,7 @@ import { IHomeComponentsContainer, IHomeComponentsRow } from "types";
 
 export const SHomeComponentsContainer = styled.div<IHomeComponentsContainer>`
 	box-shadow: inset 0 0 0.25rem 0.5rem #00000022;
-	width: 100%;
+	width: 95%;
 	min-height: 50vh;
 	padding: 2rem;
 	border-radius: 8px;
@@ -65,6 +65,7 @@ export const SHomeComponentsRow = styled.div<IHomeComponentsRow>`
 	justify-content: flex-start;
 	padding-bottom: 2rem;
 	gap: 5rem;
+	flex-wrap: wrap;
 
 	${({ type, align }): Interpolation<IHomeComponentsRow> => {
 		switch (type) {
