@@ -20,8 +20,8 @@ export const SColumn = styled.div`
 
 export const SCardsConteiner = styled.div`
 	display: flex;
-	width: 25rem;
-	height: 35rem;
+	width: 45rem;
+	height: 60rem;
 	font-size: 2rem;
 	background-color: ${theme.colors.baseBg2}99;
 	flex-direction: column;
