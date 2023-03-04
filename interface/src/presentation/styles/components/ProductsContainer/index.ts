@@ -20,8 +20,8 @@ export const SColumn = styled.div`
 
 export const SCardsConteiner = styled.div`
 	display: flex;
-	width: 50rem;
-	height: 30rem;
+	width: 25rem;
+	height: 35rem;
 	font-size: 2rem;
 	background-color: ${theme.colors.baseBg2}99;
 	flex-direction: column;
@@ -32,10 +32,16 @@ export const SCardsConteiner = styled.div`
 	box-shadow: inset 0 0 2rem 0.5rem ${theme.colors.secondaryColor},
 		0 0 1.5rem 0rem ${theme.colors.secondaryColor};
 	cursor: pointer;
+	padding: 0 3rem;
+
+	.mini {
+		width: 90%;
+		text-align: start;
+	}
 
 	img {
 		aspect-ratio: 1;
-		width: 20%;
+		width: 40%;
 	}
 `;
 
@@ -55,8 +61,8 @@ export const SProductOverlay = styled.div`
 	.description,
 	.category {
 		word-wrap: break-word;
-		max-width: 90%;
-		text-align: center;
+		width: 90%;
+		text-align: left;
 	}
 	.modal {
 		height: 80%;
@@ -101,6 +107,8 @@ export const SProductOverlay = styled.div`
 	}
 	.category {
 		font-size: 0.5em;
+		display: flex;
+		justify-content: flex-end;
 	}
 	.modal > .settings {
 		justify-content: space-between;

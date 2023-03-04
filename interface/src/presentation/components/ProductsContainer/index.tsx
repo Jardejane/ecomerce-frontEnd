@@ -71,14 +71,18 @@ export const ProductsContainer = (): JSX.Element => {
 										}
 									}}
 								>
-									<h1>{product.name}</h1>
-									<h6>{product.category}</h6>
-									<p>{product.description}</p>
 									<img
 										alt={product.name}
 										src={product.image}
 									></img>
-									<span>{product.price.toFixed(2)}</span>
+									<h1 className="mini">{product.name}</h1>
+									<h6 className="mini">{product.category}</h6>
+									<p className="mini">
+										{product.description}
+									</p>
+									<span className="mini">
+										{product.price.toFixed(2)}
+									</span>
 								</SCardsConteiner>
 							))
 						) : (
@@ -142,14 +146,14 @@ export const ProductsContainer = (): JSX.Element => {
 						)}
 						{!editing && (
 							<>
-								<h1 className="title">{currentProduct.name}</h1>
-								<p className="description">
-									{currentProduct.description}
-								</p>
 								<img
 									src={currentProduct.image}
 									alt={currentProduct.name}
 								/>
+								<h1 className="title">{currentProduct.name}</h1>
+								<p className="description">
+									{currentProduct.description}
+								</p>
 								<div className="footer">
 									<span className="price">
 										Price: <br />
